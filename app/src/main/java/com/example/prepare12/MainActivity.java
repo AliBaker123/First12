@@ -16,39 +16,45 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 private Button start;
-private Button stop = findViewById(R.id.stop);
+private Button stop ;
 private TextView count;
-private boolean isCom=true;
 private int count1=0;
+Thread counterThread;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        start=findViewById(R.id.start);
-        count=findViewById(R.id.count);
+        start = findViewById(R.id.start);
+        count = findViewById(R.id.count);
+        stop = findViewById(R.id.stop);
+            start.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    counterThread=new Thread(() ->{
+                        try {
+                            while (true) {
+                                count1++;
+                                count.setText(count1+"");
+                                Thread.sleep(1000);
+                            }
+                        }
+                        catch (Exception e) {
+                        }
 
-        start.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                isCom = true;
-                try {
-                    while (isCom == true) {
-                        Thread.sleep(1000);
-                        count1++;
-                        count.setText(String.valueOf(count1).toString());
-                    }
+                    });
+
                 }
+            });
+            stop.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    counterThread.interrupt();
 
-            }
-        });
-      stop.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-              isCom=false;
+                }
+            });
 
-          }
-      });
     }
+
 }
