@@ -32,7 +32,7 @@ private int count1=0;
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                isCom=true;
+                isCom = true;
                 try {
                     while (isCom == true) {
                         Thread.sleep(1000);
@@ -40,6 +40,7 @@ private int count1=0;
                         count.setText(String.valueOf(count1).toString());
                     }
                 }
+
             }
         });
       stop.setOnClickListener(new View.OnClickListener() {
