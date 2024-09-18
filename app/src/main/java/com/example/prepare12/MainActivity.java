@@ -35,7 +35,7 @@ private int count1=0;
                 isCom=true;
                 try {
                     while (isCom == true) {
-                        Thread.steep(1000);
+                        Thread.sleep(1000);
                         count1++;
                         count.setText(String.valueOf(count1).toString());
                     }
