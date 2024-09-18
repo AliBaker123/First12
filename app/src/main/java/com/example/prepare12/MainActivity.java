@@ -28,12 +28,17 @@ private int count1=0;
         setContentView(R.layout.activity_main);
         start=findViewById(R.id.start);
         count=findViewById(R.id.count);
+
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                while(isCom==true){
-                    count1++;
-                    count.setText(String.valueOf(count1));
+                isCom=true;
+                try {
+                    while (isCom == true) {
+                        Thread.steep(1000);
+                        count1++;
+                        count.setText(String.valueOf(count1).toString());
+                    }
                 }
             }
         });
